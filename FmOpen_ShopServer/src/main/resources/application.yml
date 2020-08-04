@@ -1,0 +1,25 @@
+server:
+  port: 8087
+spring:
+  application:
+    name: shopserver  #服务名称
+  cloud:
+    nacos:
+      discovery: #使用Nacos作为服务的注册中心
+        server-addr: 39.98.140.199:8848  #注册中心地址
+  datasource:
+    derver: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/db_openapi?serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    type: com.alibaba.druid.pool.DruidDataSource
+  sleuth:
+    sampler:
+      probability: 1 #采样率
+  zipkin:
+    sender:
+      type: web #使用http协议进行数据的传输
+    base-url: http://39.98.140.199:8022/ #zipkin的控制台的地址
+
+mybatis:
+  mapper-locations: classpath*:mapper/*Mapper.xml

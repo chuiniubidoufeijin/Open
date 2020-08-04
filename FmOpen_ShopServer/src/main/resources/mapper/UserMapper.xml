@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoxing.open.server.dao.UserDao">
+    <select id="selectByNickName" resultType="com.laoxing.open.entity.user.User">
+        select * from t_user where nickname=#{name} and flag=1 limit 1
+    </select>
+    <insert id="save" parameterType="com.laoxing.open.entity.user.User"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into t_user(nickname,password,type,headurl,flag) values
+        (#{nickname},#{password},#{type},#{headurl},1)
+    </insert>
+</mapper>
